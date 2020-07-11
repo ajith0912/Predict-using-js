@@ -1,0 +1,61 @@
+
+<html>
+<head>
+<title>
+WORD PREDICTION / AUTO COMPLETE
+</title>
+<style>
+body  {
+
+  background-image: url("1.jpg");
+  background-color: #cccccc;
+position: fixed;
+  left: 200px;
+}
+</style>
+</head>
+<BODY>
+<CENTER>
+<H1><B>WORD PREDICTION / AUTO COMPLETE</B></H1>
+</CENTER>
+<BR />
+<BR />
+
+<BR />
+<BR />
+
+<div class="wrapper" p>
+  <input type="text" id="one" class="suggest" />
+
+<script>
+
+var inputs = document.querySelectorAll('.suggest');
+for (var i = 0; field = inputs[i]; i++) {
+  field.addEventListener('keyup', function(event) {
+	var str="To Sherlock Holmes she is always _the_ woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer—excellent for drawing the veil from men’s motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results. Grit in a sensitive instrument, or a crack in one of his own high-power lenses, would not be more disturbing than a strong emotion in a such as his. And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory.";
+
+    var words = str.split(" ");
+	console.log(words);
+    var text = 'Suggested next word: ' + words[Math.floor(Math.random() * words.length)];
+
+    if (!this.suggestion) {
+      var rect = this.getBoundingClientRect();
+      var left = rect.left;
+      var top = rect.bottom;
+      this.suggestion = document.createElement('DIV');
+      this.suggestion.innerHTML = text;
+      this.suggestion.setAttribute('style', 'background: #B0B0B0; padding: 10px; position: absolute; top: ' + top + 'px; left: ' + left + 'px;');
+      this.parentNode.appendChild(this.suggestion);
+    } else {
+      this.suggestion.innerHTML = text;
+      this.suggestion.style.display = 'block';
+    }
+
+  });
+  field.addEventListener('blur', function(event) {
+    if (this.suggestion) {
+      this.suggestion.style.display = 'none';
+    }
+  });
+}
+</script>
